@@ -2,7 +2,7 @@
 #include "Head.h"
 #include <iostream>
 
-const int INVADER_HITPOINTS = 20;
+const int INVADER_HITPOINTS = 40;
 const int WINDOW_WIDTH = 800;
 
 Head::Head(const std::string& textureFile, float initialSpeed, const HeadConfig& cfg)
