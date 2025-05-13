@@ -5,7 +5,7 @@
 set(CMAKE_CXX_STANDARD 17)
 
 # Add source to this project's executable.
-add_executable (HeadInvader "HeadInvader.cpp" "HeadInvader.h")
+add_executable (HeadInvader "main.cpp" "HeadInvaderGame.cpp"  "Head.cpp")
 
 #if (CMAKE_VERSION VERSION_GREATER 3.12)
 #  set_property(TARGET HeadInvader PROPERTY CXX_STANDARD 20)
