@@ -14,7 +14,15 @@ Head::Head(const std::string& textureFile, float initialSpeed, const HeadConfig&
 
     sprite.emplace(texture);
     sprite->setScale(sf::Vector2f(config.scale, config.scale));
-    sprite->setPosition(sf::Vector2f(WINDOW_WIDTH / 2.f - config.halfWidth, config.startY));
+    //sprite->setPosition(sf::Vector2f(WINDOW_WIDTH / 2.f - config.halfWidth, config.startY));
+    sprite->setOrigin(sf::Vector2f(
+        sprite->getTexture().getSize().x / 2.f,
+        sprite->getTexture().getSize().y / 2.f)
+    );
+    sprite->setPosition(sf::Vector2f(
+        WINDOW_WIDTH / 2.f,
+        config.startY + sprite->getTexture().getSize().y * config.scale / 2.f)
+    );
 }
 
 void Head::move(float dt) {
@@ -23,14 +31,24 @@ void Head::move(float dt) {
     float dx = speed * dt * (movingRight ? 1.f : -1.f);
     sprite->move(sf::Vector2f(dx, 0));
 
-    if (sprite->getPosition().x <= 0.f) {
+    // Flip based on direction
+    sprite->setScale(sf::Vector2f(
+        movingRight ? std::abs(config.scale) : -std::abs(config.scale),
+        config.scale
+    ));
+
+    sf::FloatRect bounds = sprite->getGlobalBounds();
+
+    // Hit left edge
+    if (bounds.position.x <= 0.f) {
         movingRight = true;
         sprite->move(sf::Vector2f(0.f, config.dropStep));
         speed += config.speedIncrement;
     }
 
+    //Hit right edge
     float width = static_cast<float>(sprite->getTexture().getSize().x) * sprite->getScale().x;
-    if (sprite->getPosition().x + width >= WINDOW_WIDTH) {
+    if (bounds.position.x + bounds.size.x >= WINDOW_WIDTH) {
         movingRight = false;
         sprite->move(sf::Vector2f(0.f, config.dropStep));
         speed += config.speedIncrement;
