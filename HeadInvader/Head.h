@@ -1,13 +1,19 @@
-#ifndef HEAD_HPP
-#define HEAD_HPP
-
+#pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <optional>
 #include <string>
+
+struct HeadConfig {
+    float scale = 0.3f;
+    float startY = 80.f;
+    float halfWidth = 60.f;
+    float dropStep = 20.f;
+    float speedIncrement = 10.f;
+};
 
 class Head {
 public:
-    Head(const std::string& textureFile, float initialSpeed);
+    Head(const std::string& textureFile, float initialSpeed, const HeadConfig& config = {});
 
     void move(float dt);
     bool checkBulletHit(const sf::RectangleShape& bullet);
@@ -15,12 +21,12 @@ public:
     bool hasReachedBottom(float windowHeight) const;
     void draw(sf::RenderWindow& window) const;
 
+    float speed;
+    int hp;
+    bool movingRight;
+
 private:
     sf::Texture texture;
     std::optional<sf::Sprite> sprite;
-    int hp;
-    float speed;
-    bool movingRight;
+    HeadConfig config;
 };
-
-#endif // HEAD_HPP
