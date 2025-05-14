@@ -42,7 +42,7 @@ void HeadInvaderGame::run() {
 }
 
 void HeadInvaderGame::setupTexts() {
-    font = sf::Font("arialceb.ttf");
+    font = sf::Font("C:/Users/chris/source/repos/HeadInvader/arialceb.ttf");
 
     menuText = sf::Text(font);
     menuText->setString("Choose your Head!\n1 - Mick and Dorty\n2 - Good Friday Island\n3 - God Emperor Head\n4 - Load your own (type filename)\nPress 1, 2, 3 or 4");
@@ -67,9 +67,9 @@ void HeadInvaderGame::setupTexts() {
 
 void HeadInvaderGame::selectHead() {
     const std::map<sf::Keyboard::Key, std::string> headChoices = {
-        {sf::Keyboard::Key::Num1, "RickAndM.png"},
-        {sf::Keyboard::Key::Num2, "EasterHead.png"},
-        {sf::Keyboard::Key::Num3, "Me.png"}
+        {sf::Keyboard::Key::Num1, "C:/Users/chris/source/repos/HeadInvader/HeadInvader/Heads/RickAndM.png"},
+        {sf::Keyboard::Key::Num2, "C:/Users/chris/source/repos/HeadInvader/HeadInvader/Heads/EasterHead.png"},
+        {sf::Keyboard::Key::Num3, "C:/Users/chris/source/repos/HeadInvader/HeadInvader/Heads/Me.png"}
     };
 
     bool headSelected = false;
@@ -100,6 +100,10 @@ void HeadInvaderGame::selectHead() {
 }
 
 void HeadInvaderGame::setupGame() {
+
+    music.load("C:/Users/chris/source/repos/HeadInvader/HeadInvader/Sounds/StockTune-City Lights Rushing By_1747174226.ogg");
+    music.play(true);
+
     player.setSize({ PLAYER_WIDTH, PLAYER_HEIGHT });
     player.setFillColor(sf::Color::Green);
     player.setPosition({ WINDOW_WIDTH / 2.f - PLAYER_WIDTH / 2.f, WINDOW_HEIGHT - 40.f });

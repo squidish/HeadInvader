@@ -8,6 +8,7 @@
 #include <optional>
 #include <string>
 #include "Head.h"
+#include "MusicManager.h"
 
 class HeadInvaderGame {
 public:
@@ -40,6 +41,8 @@ private:
     std::optional<sf::Text> winText;
     std::optional<sf::Text> loseText;
     std::optional<sf::Text> restartText;
+
+    MusicManager music;
 };
 
 #endif // HEADINVADERGAME_HPP
