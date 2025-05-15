@@ -73,9 +73,9 @@ HeadInvader/ \
 
 All assets are included in the repository:
 
-Heads/ – images for different enemy heads
-music/ – synthwave soundtrack (.ogg)
-arialceb.ttf – UI font
+Heads/ – images for different enemy heads \
+music/ – synthwave soundtrack (.ogg)  \
+arialceb.ttf – UI font \
 
 If you add your own head image, it must be in the same directory as the executable and a .png and then be select the custom head option via the in-game menu and type the name of the file.
 
