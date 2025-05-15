@@ -25,16 +25,16 @@
 
 Make sure the following folders/files are present alongside the `.exe`:
 
-HeadInvader/
-├── HeadInvader.exe
-├── Heads/
-│ ├── RickAndM.png
-│ ├── EasterHead.png
-│ └── Me.png
-├── music/
-│ └── StockTune-City Lights Rushing By_1747174226.ogg
-├── arialceb.ttf
-├── SFML DLLs (if dynamically linked)
+HeadInvader/ \
+├── HeadInvader.exe \
+├── Heads/ \
+│ ├── RickAndM.png \
+│ ├── EasterHead.png \
+│ └── Me.png \
+├── music/ \
+│ └── StockTune-City Lights Rushing By_1747174226.ogg \
+├── arialceb.ttf \
+├── SFML DLLs (if dynamically linked) \
 
 
 ---
