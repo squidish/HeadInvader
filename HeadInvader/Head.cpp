@@ -14,7 +14,6 @@ Head::Head(const std::string& textureFile, float initialSpeed, const HeadConfig&
 
     sprite.emplace(texture);
     sprite->setScale(sf::Vector2f(config.scale, config.scale));
-    //sprite->setPosition(sf::Vector2f(WINDOW_WIDTH / 2.f - config.halfWidth, config.startY));
     sprite->setOrigin(sf::Vector2f(
         sprite->getTexture().getSize().x / 2.f,
         sprite->getTexture().getSize().y / 2.f)
