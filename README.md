@@ -26,11 +26,8 @@
 Make sure the following folders/files are present alongside the `.exe`:
 
 HeadInvader/
-
 ├── HeadInvader.exe
-
 ├── Heads/
-
 │ ├── RickAndM.png
 │ ├── EasterHead.png
 │ └── Me.png
