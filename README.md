@@ -68,10 +68,12 @@ HeadInvader/ \
 5. Build:
    ```bash
    cmake --build build --config Release
+   
 
-6.Run:
-```bash
-   ./build/HeadInvader.exe
+5. Build:
+   ```bash
+   ./HeadInvader.exe
+
 
 ## Assets
 
