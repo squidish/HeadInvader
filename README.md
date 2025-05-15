@@ -57,44 +57,37 @@ HeadInvader/ \
    vcpkg install sfml
 
 2. Clone Project
-
-git clone https://github.com/yourname/head-invader.git
-cd head-invader
+   git clone https://github.com/yourname/head-invader.git
+   cd head-invader
 
 3. Configure with CMake:
-
-cmake -B build -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
+   cmake -B build -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
 
 4.Build:
-
-cmake --build build --config Release
+   cmake --build build --config Release
 
 5. Run:
+   ./build/HeadInvader.exe
 
-./build/HeadInvader.exe
-
-
-Assets
+##Assets
 
 All assets are included in the repository:
 
 Heads/ – images for different enemy heads
-
 music/ – synthwave soundtrack (.ogg)
-
 arialceb.ttf – UI font
 
 If you add your own head image, it must be in the same directory as the executable and a .png and then be select the custom head option via the in-game menu and type the name of the file.
 
-Credits & Licensing
+##Credits & Licensing
 Built using SFML 3.0
 
-Music: Neon Drift
+##Music: Neon Drift
 Song by "https://stocktune.com/free-music/neon-dreams-drift-37322-41869
 
 Game design and facial largeness by Christopher Kraken
 
-Follow & Feedback
+##Follow & Feedback
 Got feedback? Want to contribute a new head? Open an issue or PR on GitHub — or just email me your forehead.
 
 
