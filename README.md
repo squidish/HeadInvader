@@ -69,7 +69,7 @@ HeadInvader/ \
 5. Run:
    ./build/HeadInvader.exe
 
-##Assets
+## Assets
 
 All assets are included in the repository:
 
@@ -79,15 +79,15 @@ arialceb.ttf – UI font
 
 If you add your own head image, it must be in the same directory as the executable and a .png and then be select the custom head option via the in-game menu and type the name of the file.
 
-##Credits & Licensing
+## Credits & Licensing
 Built using SFML 3.0
 
-##Music: Neon Drift
+## Music: Neon Drift
 Song by "https://stocktune.com/free-music/neon-dreams-drift-37322-41869
 
 Game design and facial largeness by Christopher Kraken
 
-##Follow & Feedback
+## Follow & Feedback
 Got feedback? Want to contribute a new head? Open an issue or PR on GitHub — or just email me your forehead.
 
 
