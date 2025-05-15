@@ -65,11 +65,11 @@ HeadInvader/ \
    ```bash
    cmake -B build -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
 
-5.Build:
+5. Build:
    ```bash
    cmake --build build --config Release
 
-5.Build:
+6.Run:
 ```bash
    ./build/HeadInvader.exe
 
