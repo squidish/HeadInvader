@@ -57,16 +57,20 @@ HeadInvader/ \
    vcpkg install sfml
 
 2. Clone Project
+   ```bash
    git clone https://github.com/yourname/head-invader.git
    cd head-invader
 
-3. Configure with CMake:
+4. Configure with CMake:
+   ```bash
    cmake -B build -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
 
-4.Build:
+5.Build:
+   ```bash
    cmake --build build --config Release
 
-5. Run:
+5.Build:
+```bash
    ./build/HeadInvader.exe
 
 ## Assets
