@@ -9,7 +9,7 @@
 -  Move left and right with the **arrow keys**
 -  Press **spacebar** to fire your laser
 -  The enemy head takes **40 hits to defeat**
--  If it reaches the bottom of the screen, you **lose**
+-  If it reaches the bottom of the screen, you **lose** 
 -  After victory or defeat, you return to the menu
 -  Choose from multiple heads — or load your own PNG!
 
