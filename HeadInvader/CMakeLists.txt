@@ -5,7 +5,7 @@
 set(CMAKE_CXX_STANDARD 17)
 
 # Add source to this project's executable.
-add_executable (HeadInvader "main.cpp" "HeadInvaderGame.cpp"  "Head.cpp" "MusicManager.cpp" "MusicManager.h")
+add_executable (HeadInvader "main.cpp" "HeadInvaderGame.cpp"  "Head.cpp" "MusicManager.cpp" "MusicManager.h" "Bullet.h")
 
 #find package
 set("C:/Program Files (x86)/SFML/lib/")

@@ -7,8 +7,10 @@
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include <string>
+#include <memory>
 #include "Head.h"
 #include "MusicManager.h"
+#include "Bullet.h"
 
 class HeadInvaderGame {
 public:
@@ -25,7 +27,8 @@ private:
 
     sf::RenderWindow window;
     sf::RectangleShape player;
-    sf::RectangleShape bullet;
+    //sf::RectangleShape bullet;
+    std::vector<std::unique_ptr<Bullet>> bullets;
     bool bulletActive;
     sf::Vector2f bulletVelocity;
 
@@ -43,6 +46,8 @@ private:
     std::optional<sf::Text> restartText;
 
     MusicManager music;
+    float fireCooldown = 0.25f;    // Minimum time between shots (seconds)
+    float timeSinceLastShot = 0.f; // Time since last shot was fired
 };
 
 #endif // HEADINVADERGAME_HPP

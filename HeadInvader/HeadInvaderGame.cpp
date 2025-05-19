@@ -12,9 +12,6 @@ constexpr float PLAYER_WIDTH = 60.f;
 constexpr float PLAYER_HEIGHT = 20.f;
 constexpr float PLAYER_SPEED = 300.f;
 
-constexpr float BULLET_WIDTH = 5.f;
-constexpr float BULLET_HEIGHT = 15.f;
-constexpr float BULLET_SPEED = -400.f;
 
 constexpr sf::Vector2f WIN_TEXT_OFFSET = { 120.f, 50.f };
 constexpr sf::Vector2f LOSE_TEXT_OFFSET = { 130.f, 50.f };
@@ -119,12 +116,14 @@ void HeadInvaderGame::setupGame() {
     player.setFillColor(sf::Color::Green);
     player.setPosition({ WINDOW_WIDTH / 2.f - PLAYER_WIDTH / 2.f, WINDOW_HEIGHT - 40.f });
 
-    bullet.setSize({ BULLET_WIDTH, BULLET_HEIGHT });
+    /*bullet.setSize({BULLET_WIDTH, BULLET_HEIGHT});
     bullet.setFillColor(sf::Color::Yellow);
     bulletVelocity = { 0.f, BULLET_SPEED };
-    bulletActive = false;
+    bulletActive = false;*/
 
     head.emplace(selectedHeadTextureFile, 100.f); // Could add config later
+
+    timeSinceLastShot = fireCooldown;
 
     gameOver = false;
     win = false;
@@ -153,16 +152,29 @@ void HeadInvaderGame::update(float dt) {
         player.move({ playerSpeed * dt, 0.f });
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) &&
+    /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) &&
         !bulletActive && head && head->isAlive()) {
         bullet.setPosition({
             player.getPosition().x + player.getSize().x / 2.f - bullet.getSize().x / 2.f,
             player.getPosition().y
             });
         bulletActive = true;
+    }*/
+
+    timeSinceLastShot += dt;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && head && head->isAlive() && timeSinceLastShot >= fireCooldown) {
+       
+        sf::Vector2f bulletPos = {
+            player.getPosition().x + player.getSize().x / 2.f - BULLET_WIDTH / 2.f,
+            player.getPosition().y
+        };
+
+        bullets.push_back(std::make_unique<Bullet>(bulletPos));
+        timeSinceLastShot = 0.f; // Reset cooldown
     }
 
-    if (bulletActive) {
+/*    if (bulletActive) {
         bullet.move(bulletVelocity * dt);
         if (bullet.getPosition().y < 0.f) bulletActive = false;
 
@@ -173,7 +185,28 @@ void HeadInvaderGame::update(float dt) {
                 win = true;
             }
         }
+    } */
+
+    for (auto it = bullets.begin(); it != bullets.end(); ) {
+        (*it)->update(dt);
+
+        if ((*it)->isOffScreen()) {
+            it = bullets.erase(it);
+            continue;
+        }
+
+        if (head && head->isAlive() && head->checkBulletHit((*it)->shape)) {
+            it = bullets.erase(it);
+            if (!head->isAlive()) {
+                gameOver = true;
+                win = true;
+            }
+            continue;
+        }
+
+        ++it;
     }
+
 
     if (head && head->isAlive()) {
         head->move(dt);
@@ -189,6 +222,11 @@ void HeadInvaderGame::render() {
 
     if (!gameOver) {
         if (head) head->draw(window);
+
+        // Draw bullets
+        for (const auto& bullet : bullets) {
+            window.draw(bullet->shape);
+        }
     }
     else {
         if (win && winText) window.draw(*winText);
@@ -197,7 +235,7 @@ void HeadInvaderGame::render() {
     }
 
     window.draw(player);
-    if (bulletActive) window.draw(bullet);
+    //if (bulletActive) window.draw(bullet);
 
     window.display();
 }
