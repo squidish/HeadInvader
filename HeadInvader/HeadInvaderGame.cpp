@@ -121,7 +121,9 @@ void HeadInvaderGame::setupGame() {
     bulletVelocity = { 0.f, BULLET_SPEED };
     bulletActive = false;*/
 
-    head.emplace(selectedHeadTextureFile, 100.f); // Could add config later
+    //head.emplace(selectedHeadTextureFile, 100.f); // Could add config later
+    head = std::make_unique<StandardHead>(selectedHeadTextureFile, 100.f);
+
 
     timeSinceLastShot = fireCooldown;
 

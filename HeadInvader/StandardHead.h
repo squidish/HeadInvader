@@ -1,5 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "HeadBase.h"
+//#include <SFML/Graphics.hpp>
 #include <optional>
 #include <string>
 
@@ -11,9 +12,9 @@ struct HeadConfig {
     float speedIncrement = 10.f;
 };
 
-class Head {
+class StandardHead : public HeadBase {
 public:
-    Head(const std::string& textureFile, float initialSpeed, const HeadConfig& config = {});
+    StandardHead(const std::string& textureFile, float initialSpeed, const HeadConfig& config = {});
 
     void move(float dt);
     bool checkBulletHit(const sf::RectangleShape& bullet);

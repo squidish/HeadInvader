@@ -8,7 +8,7 @@
 #include <optional>
 #include <string>
 #include <memory>
-#include "Head.h"
+#include "StandardHead.h"
 #include "MusicManager.h"
 #include "Bullet.h"
 
@@ -33,7 +33,8 @@ private:
     sf::Vector2f bulletVelocity;
 
     std::string selectedHeadTextureFile;
-    std::optional<Head> head;
+    //std::optional<Head> head;
+    std::unique_ptr<HeadBase> head;
 
     float playerSpeed;
     bool gameOver;

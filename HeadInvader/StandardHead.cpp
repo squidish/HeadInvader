@@ -1,11 +1,11 @@
 
-#include "Head.h"
+#include "StandardHead.h"
 #include <iostream>
 
 const int INVADER_HITPOINTS = 40;
 const int WINDOW_WIDTH = 800;
 
-Head::Head(const std::string& textureFile, float initialSpeed, const HeadConfig& cfg)
+StandardHead::StandardHead(const std::string& textureFile, float initialSpeed, const HeadConfig& cfg)
     : speed(initialSpeed), hp(INVADER_HITPOINTS), movingRight(true), config(cfg) {
     if (!texture.loadFromFile(textureFile)) {
         std::cerr << "[ERROR] Could not load head texture: " << textureFile << "\n";
@@ -24,7 +24,7 @@ Head::Head(const std::string& textureFile, float initialSpeed, const HeadConfig&
     );
 }
 
-void Head::move(float dt) {
+void StandardHead::move(float dt) {
     if (!sprite) return;
 
     float dx = speed * dt * (movingRight ? 1.f : -1.f);
@@ -54,7 +54,7 @@ void Head::move(float dt) {
     }
 }
 
-bool Head::checkBulletHit(const sf::RectangleShape& bullet) {
+bool StandardHead::checkBulletHit(const sf::RectangleShape& bullet) {
     if (!sprite) return false;
 
     if (sprite->getGlobalBounds().findIntersection(bullet.getGlobalBounds()).has_value()) {
@@ -64,18 +64,18 @@ bool Head::checkBulletHit(const sf::RectangleShape& bullet) {
     return false;
 }
 
-bool Head::isAlive() const {
+bool StandardHead::isAlive() const {
     return hp > 0;
 }
 
-bool Head::hasReachedBottom(float windowHeight) const {
+bool StandardHead::hasReachedBottom(float windowHeight) const {
     if (!sprite) return false;
 
     float headBottom = sprite->getPosition().y + sprite->getTexture().getSize().y * sprite->getScale().y;
     return headBottom >= windowHeight;
 }
 
-void Head::draw(sf::RenderWindow& window) const {
+void StandardHead::draw(sf::RenderWindow& window) const {
     if (sprite)
         window.draw(*sprite);
 }
