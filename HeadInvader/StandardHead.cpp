@@ -2,8 +2,7 @@
 #include "StandardHead.h"
 #include <iostream>
 
-const int INVADER_HITPOINTS = 40;
-const int WINDOW_WIDTH = 800;
+
 
 StandardHead::StandardHead(const std::string& textureFile, float initialSpeed, const HeadConfig& cfg)
     : speed(initialSpeed), hp(INVADER_HITPOINTS), movingRight(true), config(cfg) {

@@ -4,8 +4,8 @@
 #include <iostream>
 #include <map>
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 600;
+//const int WINDOW_WIDTH = 800;
+//const int WINDOW_HEIGHT = 600;
 
 // Game constants
 constexpr float PLAYER_WIDTH = 60.f;
@@ -122,8 +122,12 @@ void HeadInvaderGame::setupGame() {
     bulletActive = false;*/
 
     //head.emplace(selectedHeadTextureFile, 100.f); // Could add config later
-    head = std::make_unique<StandardHead>(selectedHeadTextureFile, 100.f);
-
+    if (selectedHeadTextureFile == "Heads/Me.png") {
+        head = std::make_unique<TeleportingHead>(selectedHeadTextureFile, 100.f);
+    }
+    else {
+        head = std::make_unique<StandardHead>(selectedHeadTextureFile, 100.f);
+    }
 
     timeSinceLastShot = fireCooldown;
 

@@ -4,13 +4,6 @@
 #include <optional>
 #include <string>
 
-struct HeadConfig {
-    float scale = 0.3f;
-    float startY = 80.f;
-    float halfWidth = 60.f;
-    float dropStep = 20.f;
-    float speedIncrement = 10.f;
-};
 
 class StandardHead : public HeadBase {
 public:

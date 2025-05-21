@@ -9,6 +9,7 @@
 #include <string>
 #include <memory>
 #include "StandardHead.h"
+#include "TeleportingHead.h"
 #include "MusicManager.h"
 #include "Bullet.h"
 
